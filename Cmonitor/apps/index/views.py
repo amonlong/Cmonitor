@@ -37,8 +37,8 @@ def searchDashboard(request):
 			objectSerializer = tableModel[tables]['serializers']
 			max_year = objectModel.objects.aggregate(Max('createDate'))['createDate__max']
 			if max_year:
-				expos = AvgIndex.objects.filter(createDate=max_year)
-				serializer = AvgIndexSerializer(expos, many=True)
+				expos = objectModel.objects.filter(createDate=max_year)
+				serializer = objectSerializer(expos, many=True)
 				return Response({'code': 0, 'data': serializer.data})
 			else:
 				return Response({'code': 0, 'data': None}, status=200)

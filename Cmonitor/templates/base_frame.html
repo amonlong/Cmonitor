@@ -56,35 +56,14 @@
                         <li>
                             <a href="{% url 'index' %}"><i class="fa fa-dashboard fa-fw"></i> 仪表盘</a>
                         </li>
-                        {% if perms.part_admin.userPage %}
                         <li>
-                            
                             <a href="#"><i class="fa fa-user fa-fw"></i> 用户概况<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{% url 'increase' %}">用户增长</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'sex' %}">用户性别</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'age' %}">用户年龄</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'rest' %}"> 用户留存<span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="{% url 'restall' %}"> 总体比较</a>
-                                            </li>
-                                            <li>
-                                                <a href="{% url 'rest' %}"> 每月留存</a>
-                                            </li>
-                                        </ul>
+                                    <a href="{% url 'userIncrease' %}">用户增长</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
-                        {% endif %}
                         {% if perms.part_admin.businessPage %}
                         <li>
                             <a href="{% url 'loan' %}"><i class="fa fa-bar-chart-o fa-fw"></i> 业务数据<span class="fa arrow"></span></a>
@@ -182,9 +161,7 @@
                         {% endif %}
                     </ul>
                 </div>
-                <!-- /.sidebar-collapse -->
             </div>
-            <!-- /.navbar-static-side -->
         </nav>
 		{% block page_content %}{% endblock %}
     </div>
@@ -192,5 +169,6 @@
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/metisMenu.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/admin.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/submit.js' %}"></script>
 </body>
 </html>

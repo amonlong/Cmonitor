@@ -7,7 +7,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="glyphicon glyphicon-globe fa-5x"></i>
+                                    <i class="glyphicon glyphicon-globe fa-4x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge" id="sumUser"></div>
@@ -24,7 +24,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-star fa-5x"></i>
+                                    <i class="fa fa-star fa-4x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge" id="activeUser"></div>
@@ -41,7 +41,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-trophy fa-5x"></i>
+                                    <i class="fa fa-trophy fa-4x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge" id="tradeNum"></div>
@@ -58,7 +58,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="glyphicon glyphicon-usd fa-5x"></i>
+                                    <i class="glyphicon glyphicon-usd fa-4x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge" id="tradeMoney"></div>
@@ -94,10 +94,10 @@
                     </div>
                 </div>
             </div>
-        <script src="../static/js/echarts.min.js"></script>
-        <script src="../static/js/china.js"></script>
-        <script src="../static/js/jquery-3.2.1.min.js"></script>
-        <script src="../static/js/index.js"></script>
+            {% load static from staticfiles %}
+            <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/china.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/apps/index.js' %}"></script> 
 {% endblock %}
-        
-
+    
