@@ -6,17 +6,25 @@ from django.db.models import Max
 from django.http import JsonResponse
 from rest_framework import status
 
-from apps.userInfo.models import UserIncrease
-from apps.userInfo.serializers import UserIncreaseSerializer
+from apps.userInfo.models import UserIncrease, UserAge
+from apps.userInfo.serializers import UserIncreaseSerializer, UserAgeSerializer
 
 @login_required
 def userIncrease_view(request):
 	return render(request,'userIncrease.html')
 
+@login_required
+def userAge_view(request):
+	return render(request,'userAge.html')
+
 tableModel = {
 	'userIncrease': {
-			'models': UserIncrease,
-			'serializers': UserIncreaseSerializer,
+		'models': UserIncrease,
+		'serializers': UserIncreaseSerializer,
+	},
+	'userAge': {
+		'models': UserAge,
+		'serializers': UserAgeSerializer,
 	}
 }
 

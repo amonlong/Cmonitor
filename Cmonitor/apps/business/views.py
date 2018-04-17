@@ -6,8 +6,8 @@ from django.db.models import Max
 from django.http import JsonResponse
 from rest_framework import status
 
-from apps.business.models import FlowLoanMoneyNO, FlowPaidMoney, FlowDelayRate
-from apps.business.serializers import FlowLoanMoneyNOSerializer, FlowDelayRateSerializer, FlowPaidMoneySerializer
+from apps.business.models import FlowLoanMoneyNO, FlowRepayMoney, FlowDelayRate
+from apps.business.serializers import FlowLoanMoneyNOSerializer, FlowDelayRateSerializer, FlowRepayMoneySerializer
 
 @login_required
 def flowLoan_view(request):
@@ -22,9 +22,9 @@ tableModel = {
 			'models': FlowLoanMoneyNO,
 			'serializers': FlowLoanMoneyNOSerializer,
 	},
-	'flowPaidMoney': {
-			'models': FlowPaidMoney,
-			'serializers': FlowPaidMoneySerializer,
+	'flowRepayMoney': {
+			'models': FlowRepayMoney,
+			'serializers': FlowRepayMoneySerializer,
 	},
 	'flowDelayRate': {
 			'models': FlowDelayRate,
@@ -36,10 +36,16 @@ tableModel = {
 def searchBussiness(request):
 	if request.method == 'POST':
 		tables = request.POST.get('table', None)
+		firmId = request.POST.get('firmId', None)
 		if tables:
 			objectModel = tableModel[tables]['models']
 			objectSerializer = tableModel[tables]['serializers']
-			expos = objectModel.objects.all()
+
+			if firmId:
+				expos = objectModel.objects.filter(firmId=firmId)
+			else:
+				expos = objectModel.objects.all()
+				
 			if expos:
 				serializer = objectSerializer(expos, many=True)
 				return Response({'code': 0, 'data': serializer.data})

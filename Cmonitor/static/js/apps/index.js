@@ -37,10 +37,6 @@ $(document).ready(function(){
             
             var myChart = echarts.init(document.getElementById('loudou'));
             var option = {
-                title: {
-                    text: '转化',
-                    // subtext: '纯属虚构'
-                },
                 tooltip: {
                     trigger: 'item',
                     formatter: function(a){
@@ -746,20 +742,20 @@ $(document).ready(function(){
                         fontSize: 30
                     }
                 }],
-                brush: {
-                    outOfBrush: {
-                        color: '#abc'
-                    },
-                    brushStyle: {
-                        borderWidth: 2,
-                        color: 'rgba(0,0,0,0.2)',
-                        borderColor: 'rgba(0,0,0,0.5)',
-                    },
-                    seriesIndex: [0, 1],
-                    throttleType: 'debounce',
-                    throttleDelay: 300,
-                    geoIndex: 0
-                },
+                // brush: {
+                //     outOfBrush: {
+                //         color: '#abc'
+                //     },
+                //     brushStyle: {
+                //         borderWidth: 2,
+                //         color: 'rgba(0,0,0,0.2)',
+                //         borderColor: 'rgba(0,0,0,0.5)',
+                //     },
+                //     seriesIndex: [0, 1],
+                //     throttleType: 'debounce',
+                //     throttleDelay: 300,
+                //     geoIndex: 0
+                // },
                 geo: {
                     map: 'china',
                     left: '10',

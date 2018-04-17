@@ -49,19 +49,41 @@ def indexHopper():
 		result = db.select(sql)
 		registerNum = result[0]['num']
 
-		sql = """select count(distinct user_id) 'num' from ci_cash_apply_info where create_time > '2018-01-01' """
+		sql = """
+			select count(distinct cc.user_id) 'num' 
+			from ci_cash_apply_info cc, user uu 
+			where cc.user_id = uu.id 
+			and uu.date_created > '2018-01-01'
+		"""
 		result = db.select(sql)
 		applyNum = result[0]['num']
 
-		sql = """select count(DISTINCT user_id) 'num' from ci_cash_apply_info where status in ('FA_SUCCESS','SUCCESS') and create_time > '2018-01-01' """
+		sql = """
+			select count(DISTINCT user_id) 'num' 
+			from ci_cash_apply_info cc,user uu
+			where cc.user_id = uu.id 
+			and uu.date_created > '2018-01-01'
+			and cc.status in ('FA_SUCCESS','SUCCESS')
+			"""
 		result = db.select(sql)
 		passNum = result[0]['num']
 
-		sql = """select count(DISTINCT userSid) 'num' from loan where status=6 and createdTime > '2018-01-01' """
+		sql = """
+			select count(DISTINCT userSid) 'num' 
+			from loan l,user uu
+			where l.userSid=uu.id and l.status=6 and uu.date_created > '2018-01-01'
+		"""
 		result = db.select(sql)
 		loanNum = result[0]['num']
 
-		sql = """select count(*) 'num' from ( select userSid,count(1) 'num' from loan where status=6 and createdTime > '2018-01-01' group by userSid ) l where l.num > 1"""
+		sql = """
+			select count(*) 'num' from ( 
+				select userSid,count(1) 'num' 
+				from loan ll,user uu
+				where ll.userSid=uu.id and ll.status=6 and uu.date_created > '2018-01-01'
+				group by ll.userSid ) l 
+			where l.num > 1
+		"""
 		result = db.select(sql)
 		reloanNum = result[0]['num']
 
@@ -83,7 +105,7 @@ def indexPlace():
 		db.connection()
 
 		sql = """
-			select aes_decrypt(a.id_num,'1zhida**') 'id_num' from _user a,loan b where a.id=b.userSid and a.id_num is not null and b.createdTime > '2018-01-01' and b.status=6 ;
+			select aes_decrypt(a.id_num,'1zhida**') 'id_num' from _user a,loan b where a.id=b.userSid and a.id_num is not null and uu.date_created > '2018-01-01' and b.status=6 ;
 		"""
 		result = db.select(sql)
 		result = [item['id_num'].decode('utf-8') for item in result]
@@ -140,6 +162,6 @@ def indexPlace():
 		return 'FAILURE', e
 
 if __name__ == '__main__':
-	#indexHopper()
-	#indexHead()
+	indexHopper()
+	indexHead()
 	indexPlace()

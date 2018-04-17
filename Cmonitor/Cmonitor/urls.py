@@ -7,4 +7,6 @@ urlpatterns = [
     url(r'^', include('apps.index.urls')),
     url(r'^', include('apps.userInfo.urls')),
     url(r'^', include('apps.business.urls')), 
+    url(r'^', include('apps.risk.urls')), 
+    url(r'^', include('apps.product.urls')), 
 ]

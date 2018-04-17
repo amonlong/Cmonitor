@@ -57,59 +57,38 @@
                             <a href="{% url 'index' %}"><i class="fa fa-dashboard fa-fw"></i> 仪表盘</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> 用户概况<span class="fa arrow"></span></a>
+                            <a href=""><i class="fa fa-user fa-fw"></i> 用户概况<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{% url 'userAge' %}">用户年龄</a>
+                                </li>
                                 <li>
                                     <a href="{% url 'userIncrease' %}">用户增长</a>
                                 </li>
                             </ul>
                         </li>
-                        {% if perms.part_admin.businessPage %}
                         <li>
-                            <a href="{% url 'loan' %}"><i class="fa fa-bar-chart-o fa-fw"></i> 业务数据<span class="fa arrow"></span></a>
+                            <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> 业务数据<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{% url 'loan' %}"> 贷款</a>
+                                    <a href="{% url 'loan' %}"> 贷还款</a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'repayment' %}"> 还款</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'income' %}"> 营业收入（修改中）</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'delayRateFund' %}"> 资金方业务<span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="{% url 'loanFund' %}"> 贷款金额</a>
-                                            </li>
-                                            <li>
-                                                <a href="{% url 'delayRateFund' %}"> 逾期率</a>
-                                            </li>
-                                        </ul>
-                                </li>
-                                <li>
-                                    <a href="{% url 'c2c' %}"> C2C</a>
+                                    <a href="{% url 'delayRate' %}"> 逾期率</a>
                                 </li>
                             </ul>
 						</li>
-                        {% endif %}
-                        {% if perms.part_admin.riskPage %}
 						<li>
-                            <a href="{% url 'aeyepassrate' %}"><i class="fa fa-key fa-fw"></i> 风险监控<span class="fa arrow"></span></a>
+                            <a href=""><i class="fa fa-key fa-fw"></i> 风险监控<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{% url 'aeyepassrate' %}"> 通过率</a>
+                                    <a href="{% url 'passRate' %}"> 通过率</a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'aeyedelayday' %}"> 逾期率</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'aeyegetrate' %}"> 取现率</a>
+                                    <a href="{% url 'overdueRate' %}"> 逾期率</a>
                                 </li>
                             </ul>
 						</li>
-                        {% endif %}
                         {% if perms.part_admin.financePage %}
                         <li>
                             <a href="{% url 'financetodayloan' %}"><i class="glyphicon glyphicon-yen"></i> 财务<span class="fa arrow"></span></a>

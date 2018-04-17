@@ -1,0 +1,54 @@
+{% extends "base_frame.html" %}
+{% block page_content %}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">监控指标-逾期率</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> 逾期率曲线
+                    </div>
+                    <div class="panel-body">
+                        <div id="main" style="width: 100%;height: 420px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> 逾期率情况数据
+                    </div>
+                    <div class="panel-body">
+                        <table id="data" class="table table-striped table-bordered jambo_table">
+                            <thead>
+                                <tr>
+                                    <th> 日期</th>
+                                    <th> 首逾率</th>
+                                    <th> 逾期率3+</th>
+                                    <th> 逾期率7+</th>
+                                    <th> 逾期率14+</th>
+                                    <th> 逾期率21+</th>
+                                    <th> 逾期率M1+</th>
+                                    <th> 逾期率M2+</th>
+                                    <th> 逾期率M3+</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% load static from staticfiles %}
+    <link href="{% static 'css/jquery.dataTables.min.css' %}" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/apps/riskOverdueRate.js' %}"></script>
+{% endblock %}
