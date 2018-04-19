@@ -4,7 +4,7 @@ django.setup()
 
 from celery.schedules import crontab
 from datetime import timedelta
-from record.models import TaskItem 
+from apps.record.models import TaskItem 
 
 CELERY_ENABLE_UTC = False # 不是用UTC
 CELERY_TIMEZONE = 'Asia/Shanghai'
@@ -18,7 +18,7 @@ def makeSchedule():
 		for item in taskitem:
 			temp = {}
 			hour, minute = eval(item.para).get('hour', 0), eval(item.para).get('minute', 0)
-			temp['task'] = 'statisticsTasks.' + item.taskfunc
+			temp['task'] = 'statTasks.' + item.taskfunc
 			#temp['schedule'] = timedelta(seconds=5)
 			temp['schedule'] = crontab(hour=hour, minute=minute)
 			temp['args'] = (item.taskname,)

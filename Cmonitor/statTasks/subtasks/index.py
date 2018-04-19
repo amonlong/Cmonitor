@@ -105,7 +105,7 @@ def indexPlace():
 		db.connection()
 
 		sql = """
-			select aes_decrypt(a.id_num,'1zhida**') 'id_num' from _user a,loan b where a.id=b.userSid and a.id_num is not null and uu.date_created > '2018-01-01' and b.status=6 ;
+			select aes_decrypt(a.id_num,'1zhida**') 'id_num' from _user a,loan b where a.id=b.userSid and a.id_num is not null and b.status=6 ;
 		"""
 		result = db.select(sql)
 		result = [item['id_num'].decode('utf-8') for item in result]
@@ -162,6 +162,6 @@ def indexPlace():
 		return 'FAILURE', e
 
 if __name__ == '__main__':
-	indexHopper()
-	indexHead()
+	#indexHopper()
+	#indexHead()
 	indexPlace()

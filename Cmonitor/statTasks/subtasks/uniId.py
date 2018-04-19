@@ -49,8 +49,9 @@ def productFirm():
 		db.delete('delete from product_ProductFirm')
 		up_sql = """ insert into product_ProductFirm(firmId,productId,title,createDate) values (%s,%s,%s,%s) """
 		db.update(up_sql, result)
+		return 'SUCCESS', ''
 	except Exception as e:
-		raise
+		return 'FAILURE', e
 
 if __name__ == '__main__':
 	productFirm()

@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^', include('apps.business.urls')), 
     url(r'^', include('apps.risk.urls')), 
     url(r'^', include('apps.product.urls')), 
+    url(r'^', include('apps.record.urls')), 
 ]
