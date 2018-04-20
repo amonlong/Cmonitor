@@ -3,6 +3,8 @@
 import datetime
 import pandas as pd
 import json
+import os
+
 from libfile.dbConfig import MAIN_CONFIG, LOCAL_CONFIG
 from libfile.dbModel import dbc
 import config
@@ -111,7 +113,7 @@ def indexPlace():
 		result = [item['id_num'].decode('utf-8') for item in result]
 		data = pd.DataFrame()
 		data['id_num'] = result
-		id_init = pd.read_csv('data/t_id_card_init.csv')
+		id_init = pd.read_csv(os.path.dirname(os.path.abspath(__file__)) + '/data/t_id_card_init.csv')
 		id_init['code'] = id_init['code'].map(str)
 		province = id_init[id_init['code'].map(lambda x:str(x)[-4:]=='0000')]
 		province1 = province[province['name'].map(lambda x: '北京'in x or '上海' in x or '天津'in x or '重庆' in x)]   
@@ -158,6 +160,7 @@ def indexPlace():
 		up_sql = """ insert into index_IndexCity(cityName,numInCity,createDate) values (%s,%s,%s) """
 		result = zip(cityName,cityNum,ctime)
 		db.update(up_sql, result)
+		return 'SUCCESS', ''
 	except Exception as e:
 		return 'FAILURE', e
 
