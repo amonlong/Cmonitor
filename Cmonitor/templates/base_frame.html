@@ -89,55 +89,6 @@
                                 </li>
                             </ul>
 						</li>
-                        {% if perms.part_admin.financePage %}
-                        <li>
-                            <a href="{% url 'financetodayloan' %}"><i class="glyphicon glyphicon-yen"></i> 财务<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{% url 'financetodayloan' %}"> 今日资金贷出情况</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'financetodayloan' %}">待添加<span class="fa arrow"></span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        {% endif %}
-                        {% if perms.part_admin.auditPage %}
-                        <li>
-                            <a href="tables.html"><i class="fa fa-html5 fa-fw"></i> 信审<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">总体</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">个人</a>
-                                </li>
-                            </ul>
-                        </li>
-                        {% endif %}
-                        {% if perms.part_admin.collectPage %}
-                        <li>
-                            <a href="{% url 'collectNum' %}"><i class="glyphicon glyphicon-earphone fa-fw"></i> 催收<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{% url 'collectNum' %}"> 催收情况</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'collectRate' %}"> 催回率</a>
-                                </li>
-                            </ul>
-                        </li>
-                        {% endif %}
-                        {% if perms.part_admin.marketPage %}
-                        <li>
-                            <a href="{% url 'marketNum' %}"><i class="glyphicon glyphicon-th-large fa-fw"></i> 市场<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{% url 'marketNum' %}">今日贷款情况</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        {% endif %}
                     </ul>
                 </div>
             </div>
